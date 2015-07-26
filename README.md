@@ -1,5 +1,10 @@
 # splatoon-calculator
 
+App is in 
+```
+client/app
+```
+
 ## Usage
 
 Build with:
