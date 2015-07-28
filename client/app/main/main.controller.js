@@ -321,7 +321,7 @@ angular.module('splatoonApp')
 		icon : 'assets/images/Ability_Bomb_Range_Up.png',
 		stackable: true,
 		affects: 'Bomb Throw Range',
-		mb : [15,28.5,42],
+		mb : [15,13.5,13.5],
 		sb: [5,5,5]
 	}, {
 		name : 'Ink Recovery Up',
