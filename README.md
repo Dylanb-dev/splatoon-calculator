@@ -1,6 +1,6 @@
 # splatoon-calculator
 
-splatoon-calculator.herokuapp.com
+https://splatoon-calculator.herokuapp.com/
 
 App is in 
 ```
