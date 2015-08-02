@@ -1,6 +1,6 @@
 # splatoon-calculator
 
-https://splatoon-calculator.herokuapp.com/
+Live: https://splatoon-calculator.herokuapp.com/
 
 App is in 
 ```
@@ -19,7 +19,6 @@ Load live Preview:
 grunt serve
 ```
 See https://github.com/DaftMonk/generator-angular-fullstack for more information.
-
 
 Calculator for splatoon built with yeoman fullstack generator:
 https://github.com/DaftMonk/generator-angular-fullstack
