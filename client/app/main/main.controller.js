@@ -254,7 +254,7 @@ angular.module('splatoonApp')
 		icon : 'assets/images/Ability_Main_Ink_Saver.png',
 		stackable: true,
 		affects: 'Ink Usage Main',
-		mb : [-10,-10,-310],
+		mb : [-10,-10,-10],
 		sb : [-5,-5,-5]
 	}, {
 		name : 'Ink Saver (Sub)',
