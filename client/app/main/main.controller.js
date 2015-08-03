@@ -58,8 +58,9 @@ angular.module('splatoonApp')
 		calc();
 	};
 	
+	// Calc function for finding values
 	function calc() {
-	
+		
 
 		//Hide all clothes and show what is selected.
 		for(var i = 0; i < $scope.clothes.length; i++){
