@@ -31,6 +31,18 @@ Load live Preview (currently broken?):
 grunt serve
 ```
 
+
+## Deployment
+
+Build App:
+```
+grunt -force
+```
+Preview Built App:
+```
+grunt serve:dist
+```
+
 See https://github.com/DaftMonk/generator-angular-fullstack for more information.
 
 Calculator for splatoon built with yeoman fullstack generator:
