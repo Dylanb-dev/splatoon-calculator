@@ -52,9 +52,9 @@
       </tr>
     </thead>
     <tbody ng-repeat="item in gear" ng-show="item.show">
-      <tr >
+      <tr>
         <td><h5>{{item.name}}</h5></td>
-        <td ng-repeat="ability in abl" ng-show="{{ability.name == item.ability}}"><img ng-style="{padding:0, width:50, height:50 }" ng-src="{{ability.icon}}" alt="{{ability.name}}"></img></td>
+        <td ng-repeat="ability in abilities" ng-show="{{ability.name == item.ability}}"><img ng-style="{padding:0, width:50, height:50 }" ng-src="{{ability.icon}}" alt="{{ability.name}}"></img></td>
         <td ng-repeat="abil in abilities" ng-show="{{abil.stackable}}" ng-class="{red: item[abil.name] == '1/33', lblue: item[abil.name] == '1/16.5', blue: item[abil.name] == '1/13', green: item[abil.name] == '1/3.3'}"><h4 ng-style="{padding:5}">{{item[abil.name]}}</h4></td>
       </tr>
     </tbody>
