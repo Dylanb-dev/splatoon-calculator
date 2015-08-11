@@ -14,12 +14,26 @@ angular.module('splatoonApp')
 	$scope.subs = [];
 
 	$scope.activate = function(ability){
-		var i = $scope.abilities.indexOf(ability);
+
+		/*
+		for(var i = 0; i < $scope.mains.length; i++){
+			for(var j=0; j < $scope.gear.length; j++){
+
+					if($scope.gear[j].ability === $scope.mains[i].name){
+						abilitygear[i].push($scope.gear[j].type)
+				}
+
+			}
+		}
+		*/
+
+
 		if (points >= 18) { 
 			alert('Too Many Abilities!!');
 		}
 
-		else if( $scope.mains.length<3 ){
+		var i = $scope.abilities.indexOf(ability);
+		if( $scope.mains.length<3 ){
 			
 			if($scope.abilities[i].stackable){
 				$scope.mains.push($scope.abilities[i]);
