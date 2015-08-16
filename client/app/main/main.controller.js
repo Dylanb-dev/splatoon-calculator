@@ -30,6 +30,7 @@ angular.module('splatoonApp')
 
 		if (points >= 18) { 
 			alert('Too Many Abilities!!');
+			return;
 		}
 
 		var i = $scope.abilities.indexOf(ability);
@@ -45,6 +46,7 @@ angular.module('splatoonApp')
 			}
 			else if ($scope.mains.indexOf(ability) >-1) {
 				alert('Cant Stack This Ability!!'); 
+				return;
 			}
 			else{
 				$scope.mains.push($scope.abilities[i]);
@@ -99,7 +101,13 @@ angular.module('splatoonApp')
 						console.log('showing ' + $scope.gear[i].show);
 
 					}
-
+					for(var itm in $scope.gear[i]){
+						if(itm === $scope.mains[j].name && $scope.gear[i][itm] === '1/3.3'){
+							console.log('showing ' + $scope.gear[i].name);
+							$scope.gear[i].show = true;
+							console.log('showing ' + $scope.gear[i].show);
+						}
+					}
 				}
 			}
 
