@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Splatoon Calculator</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js'></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script src='test.js'></script>
+<script src='main.controller.js'></script>
+<script src='stats.js'></script>
+<script src='gear.js'></script>
+<script src='abilities.js'></script>
+
+
+
+
+<link  href="styles.css" rel="stylesheet">
+</head>
+<body ng-app="splatoonApp" ng-controller="MainCtrl">
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <!-- <img src="assets/images/squid.png" class="img-responsive" alt="Responsive image" ng-style="{padding:-20, width:800 }"> -->
+    <h1>Splatoon Calculator</h1>
+  </div>
+</header>
+
+<div class="container" ng-controller="MainCtrl">
+<div class="col-md-6">
+  <h2 class="page-header">Choose Your abilities</h2>
+      <ul class="col-xs-3" ng-repeat="ability in abilities">
+        <a href="javascript:"><img ng-src="{{ability.icon}}" alt="{{ability.name}}" ng-click="activate(ability)"></a>
+      </ul>
+      </a>
+      <button type="button" class="btn btn-default btn-lg" ng-click="clear()">RESET</button>
+      <h1 >Mains:</h1>
+      <a href="javascript:">
+      <img ng-repeat="main in mains track by $index" ng-src="{{main.icon}}" ng-class="imgtble" alt="{{main.name}}"
+      ng-click="demain(main)" />
+      </a>
+      <h2 >Subs:</h2>
+      <a href="javascript:">
+      <img ng-repeat="sub in subs track by $index" ng-style="{padding:10}" ng-src="{{sub.icon}}" ng-class="imgtble" alt="{{sub.name}}" ng-click="desub(sub)"/>
+      </a>
+     <h2>Abilities:</h2>
+     <img ng-repeat="main in mains track by $index" ng-src="{{main.icon}}" ng-class="imgtble" alt="{{main.name}}" ng-hide="{{main.stackable}}"/>
+     <p></p>
+     <h5 ng-repeat="main in mains track by $index" ng-hide="{{main.stackable}}">{{main.name}}:  {{main.effects}}</h5>
+</div>
+
+
+
+<div class="col-md-6">
+  <h2 class="page-header">Stats</h2>
+  <a class="col-md-6" ng-repeat="stat in stats">
+  <p>{{stat.name}}</p>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="{{stat.value}}" aria-valuemin="{{stat.min}}" aria-valuemax="{{stat.max}}" style="width: {{stat.value/stat.max * 100}}%;">
+      {{stat.value}}{{stat.type}}
+    </div>
+  </div>
+  </a>
+  <h2 class="page-header">Possible Gear (Rolls)</h2>
+  <p>Common: 1/3.3 | Rare: 1/33 | Flat: 1/13</p>
+  <div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th><h4>Name</h4></th>
+        <th><h4>Image</h4></th>
+        <th><h4>Ability</h4></th>
+        <th><h4>Comn</h4></th>
+        <th><h4>Rare</h4></th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="item in gear" ng-show="item.show">
+      <tr>
+        <td><a href="http://splatoonwiki.org/wiki/{{item.uname}}">{{item.name}}</a></td>
+        <td><img ng-src="assets/images/{{item.uname}}.png" ></td>
+        <td ng-repeat="ability in abilities" ng-show="{{ability.name == item.ability}}"><img  ng-src="{{ability.icon}}" alt="{{ability.name}}"></img></td>
+        <td ng-style="{'background-color':'#77DD77'}"><img ng-repeat="abil in abilities" ng-if="item[abil.name] == '1/3.3'" ng-src="{{abil.icon}}" alt="{{abil.name}}"></img></td>
+        <td ng-style="{'background-color':'#FF6961'}"><img ng-repeat="abil in abilities" ng-if="item[abil.name] == '1/33'" ng-src="{{abil.icon}}" alt="{{abil.name}}"></img></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- <div class="container">
+<div class="container">
+     <h3>Headgear:</h3>
+     <a  href="http://splatoonwiki.org/wiki/{{item.uname}}" ng-repeat="item in gear" ng-show="item.show && item.type == 'Headgear'">{{item.name}} ({{item.ability}}), </a>
+     <h3>Clothes:</h3>
+     <a href="http://splatoonwiki.org/wiki/{{item.uname}}" ng-repeat="item in gear" ng-show="item.show && item.type == 'Clothes'">{{item.name}} ({{item.ability}}), </a>
+        <h3>Shoes:</h3>
+     <a href="http://splatoonwiki.org/wiki/{{item.uname}}" ng-repeat="item in gear" ng-show="item.show && item.type == 'Shoes'" >{{item.name}} ({{item.ability}}), </a>
+</div>
+</div> -->
+
+<footer class="footer">
+  <div class="container">
+      <p>Calculator for splatoon built with <a href="https://angularjs.org/
+">AngularJS</a> |
+         <a href="https://docs.google.com/spreadsheets/d/1mE97vf8FxdfvR6pt7tFvYXkYGSZGg4AsrTI_2veUlbs/edit#gid=1453815829">Roll Information</a> |
+         <a href="http://squidboards.com/threads/how-to-calculate-ability-effects.8271/
+">Ability Information</a> |
+         <a href="http://splatoonwiki.org/wiki/">Inkipedia</a>
+          | <a href="https://github.com/lolcookie/splatoon-calculator">GitHub</a>
+         </p>
+  </div>
+</footer>
+</html>
