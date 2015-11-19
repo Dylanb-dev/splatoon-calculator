@@ -1,6 +1,6 @@
 # splatoon-calculator
 
-Live: https://splatoon-calculator.herokuapp.com/
+Live: http://lolcookie.github.io/
 Soon: https://calc.splatoon.ink/
 
 ## Usage
