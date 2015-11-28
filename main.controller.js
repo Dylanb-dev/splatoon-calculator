@@ -31,7 +31,7 @@ angular.module('splatoonApp')
 		*/
 
 
-		if (points >= 18) {
+		if (points >= 57) {
 			alert('Too Many Abilities!!');
 			return;
 		}
@@ -39,31 +39,23 @@ angular.module('splatoonApp')
 		var i = $scope.abilities.indexOf(ability);
 		if( $scope.mains.length<3 ){
 
-			if($scope.abilities[i].stackable){
+			if($scope.abilities[i].stackable || $scope.mains.indexOf(ability) == -1){
 				$scope.mains.push($scope.abilities[i]);
-				points+=3;
+				points+=10;
 				console.log($scope.mains.length);
 
 				console.log($scope.mains[$scope.mains.length-1]);
 				calc();
 			}
-			else if ($scope.mains.indexOf(ability) >-1) {
+			else {
 				alert('Cant Stack This Ability!!');
 				return;
-			}
-			else{
-				$scope.mains.push($scope.abilities[i]);
-				points+=3;
-				console.log($scope.mains.length);
-
-				console.log($scope.mains[$scope.mains.length-1]);
-				calc();
 			}
 		}
 
 		else if ( $scope.abilities[i].stackable ){
 			$scope.subs.push($scope.abilities[i]);
-			points++;
+			points+=3;
 			calc();
 		}
 		else {
@@ -73,12 +65,12 @@ angular.module('splatoonApp')
 
 	$scope.demain = function(main) {
 		$scope.mains.splice($scope.mains.indexOf(main), 1);
-		points-=3;
+		points-=10;
 		calc();
 	};
 	$scope.desub = function(sub) {
 		$scope.subs.splice($scope.subs.indexOf(sub), 1);
-		points--;
+		points-=3;
 		calc();
 	};
 
@@ -115,51 +107,11 @@ angular.module('splatoonApp')
 			}
 
 		for(var i=0; i < $scope.stats.length; i++){
-			$scope.stats[i].value=$scope.stats[i].default;
-		}
-
-		var number = 0;
-		for(var i=0; i < $scope.mains.length; i++){
-			for(var j=0; j < $scope.stats.length; j++){
-				if($scope.mains[i].affects === $scope.stats[j].name){
-					number = 0;
-					for(var k=0; k < i; k++){
-						if($scope.mains[k] === $scope.mains[i]){
-							number++;
-						}
-					}
-
-					$scope.stats[j].value+=$scope.mains[i].mb[number];
-
-		}
-				$scope.stats[j].value = Math.round($scope.stats[j].value * 100) / 100;
-
-	}
-}
-		number = 0;
-		for(var i=0; i < $scope.subs.length; i++){
-			for(var j=0; j < $scope.stats.length; j++){
-				if($scope.subs[i].affects === $scope.stats[j].name){
-					number = 0;
-					for(var k=0; k < i; k++){
-						if($scope.subs[k] === $scope.subs[i]){
-							number++;
-						}
-					}
-
-					$scope.stats[j].value+=$scope.subs[i].sb[Math.min(number,2)];
-					if ($scope.stats[j].value < $scope.stats[j].min){
-						$scope.stats[j].value=$scope.stats[j].min;
-				}
-				else if($scope.stats[j].value > $scope.stats[j].max){
-						$scope.stats[j].value=$scope.stats[j].max;
-				}
-			}
-
-			$scope.stats[j].value = Math.round($scope.stats[j].value * 100) / 100;
-
-			}
-
+			var name = $scope.stats[i].name;
+			$scope.stats[i].apply(
+				$scope.mains.count(name),
+				$scope.subs.count(name)
+			);
 		}
 	}
 
