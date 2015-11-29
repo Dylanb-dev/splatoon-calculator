@@ -185,7 +185,7 @@ angular.module('splatoonApp').gear = function ($scope) {
 {"Show":true,"type":"Clothes","name":"Rodeo Shirt","ability":"Quick Super Jump","Swim Speed Up":"1/3.3","Defense Up":"1/33"},
 {"Show":true,"type":"Clothes","name":"Slipstream United","ability":"Defense Up","Special Charge Up":"1/3.3","Special Duration Up":"1/33"},
 {"Show":true,"type":"Clothes","name":"Squid Satin Jacket","ability":"Quick Respawn","Special Saver":"1/3.3","Special Charge Up":"1/33"},
-{"Show":true,"type":"Clothes","name":"Squidstar Waistcoat","ability":"Cold Blooded","Swim Speed Up":"1/3.3","Defense Up":"1/33"},
+{"Show":true,"type":"Clothes","name":"Squidstar Waistcoat","ability":"Cold-Blooded","Swim Speed Up":"1/3.3","Defense Up":"1/33"},
 {"Show":true,"type":"Clothes","name":"Striped Peaks LS","ability":"Quick Super Jump","Defense Up":"1/3.3","Damage Up":"1/33"},
 {"Show":true,"type":"Clothes","name":"White LS","ability":"Ink Recovery Up","Defense Up":"1/3.3","Damage Up":"1/33"},
 {"Show":true,"type":"Clothes","name":"White Sailor Suit","ability":"Ink Saver (Main)","Special Duration Up":"1/3.3","Ink Saver (Sub)":"1/33"},
