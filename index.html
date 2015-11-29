@@ -66,7 +66,7 @@
   <p>{{stat.name}}</p>
   <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="{{stat.value}}" aria-valuemin="{{stat.min}}" aria-valuemax="{{stat.max}}" style="width: {{stat.value/stat.max * 100}}%;">
-      {{stat.value}}{{stat.type}}
+      {{stat.value.toFixed(2)}}{{stat.type}}
     </div>
   </div>
   </a>
