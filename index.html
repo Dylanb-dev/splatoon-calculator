@@ -6,17 +6,15 @@
   <title>Splatoon Calculator</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
   <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js'></script>
 
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<script src='test.js'></script>
 <script src='main.controller.js'></script>
 <script src='stats.js'></script>
 <script src='gear.js'></script>
@@ -35,7 +33,15 @@
   </div>
 </header>
 
+
+
 <div class="container" ng-controller="MainCtrl">
+  <modal title="Error" visible="showModal">
+      <button type="close" class="btn btn-default" data-dismiss="modal">Close</button>
+
+  </modal>
+
+
 <div class="col-md-6">
   <h2 class="page-header">Choose Your abilities</h2>
       <ul class="col-xs-3" ng-repeat="ability in abilities">

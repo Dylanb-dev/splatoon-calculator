@@ -1,10 +1,9 @@
 'use strict';
 
-var splatoonApp = angular.module("splatoonApp", []);
+var splatoonApp = angular.module('splatoonApp', []);
 
 
-angular.module('splatoonApp')
-.controller('MainCtrl', function ($scope) {
+splatoonApp.controller('MainCtrl', function ($scope) {
 
 	//Load in datatables
 	angular.module('splatoonApp').stats($scope);
@@ -15,6 +14,11 @@ angular.module('splatoonApp')
 	var points = 0;
 	$scope.mains = [];
 	$scope.subs = [];
+	$scope.showModal = false;
+	$scope.ErrorMessage= 'Testing';
+  $scope.toggleModal = function(){
+        $scope.showModal = !$scope.showModal;
+  };
 
 	$scope.activate = function(ability){
 
@@ -32,7 +36,9 @@ angular.module('splatoonApp')
 
 
 		if (points >= 57) {
-			alert('Too Many Abilities!!');
+			//alert('Too Many Abilities!!');
+			$scope.ErrorMessage = 'Too Many Abilities!!';
+			$scope.toggleModal();
 			return;
 		}
 
@@ -48,7 +54,9 @@ angular.module('splatoonApp')
 				calc();
 			}
 			else {
-				alert('Cant Stack This Ability!!');
+				//alert('Cannot Stack This Ability!!');
+				$scope.ErrorMessage = 'Cannot Stack This Ability!!';
+				$scope.toggleModal();
 				return;
 			}
 		}
@@ -59,8 +67,9 @@ angular.module('splatoonApp')
 			calc();
 		}
 		else {
-			alert('Cannot Sub This Ability!!');
-		}
+			//alert('Cannot Sub This Ability!!');
+			$scope.ErrorMessage = 'Cannot Sub This Ability!!';
+			$scope.toggleModal();		}
 	};
 
 	$scope.demain = function(main) {
@@ -122,4 +131,44 @@ angular.module('splatoonApp')
 		points = 0;
 		calc();
 	};
+});
+
+splatoonApp.directive('modal', function () {
+    return {
+      template: '<div class="modal fade">' +
+          '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+              '<div class="modal-header">' +
+                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                '<h4 class="modal-title">{{ ErrorMessage }}</h4>' +
+								'</div>' +
+	              '<div class="modal-body" ng-transclude></div>' +
+	            '</div>' +
+	          '</div>' +
+	        '</div>',
+      restrict: 'E',
+      transclude: true,
+      replace:true,
+      scope:true,
+      link: function postLink(scope, element, attrs) {
+        scope.$watch(attrs.visible, function(value){
+          if(value == true)
+            $(element).modal('show');
+          else
+            $(element).modal('hide');
+        });
+
+        $(element).on('shown.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = true;
+          });
+        });
+
+        $(element).on('hidden.bs.modal', function(){
+          scope.$apply(function(){
+            scope.$parent[attrs.visible] = false;
+          });
+        });
+      }
+    };
 });
