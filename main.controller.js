@@ -142,7 +142,10 @@ splatoonApp.directive('modal', function () {
                 '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
                 '<h4 class="modal-title">{{ ErrorMessage }}</h4>' +
 								'</div>' +
-	              '<div class="modal-body" ng-transclude></div>' +
+								'<div class="modal-body">' +
+									'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+									'</div>' +
+								'</div>' +
 	            '</div>' +
 	          '</div>' +
 	        '</div>',
