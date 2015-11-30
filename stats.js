@@ -71,7 +71,7 @@ angular.module('splatoonApp').stats = function ($scope) {
     new Stat("Respawn Rate", "s", 2, (360 + 30 + 120)/60, 45, function (x) {
         this.value = Math.max(this.min, ((1.0 - x) * 360 + 30 + 120)/60);
     }),
-    new Stat("Jump Speed", "s", 2.5, 5, 60, function (x) {
+    new Stat("Jump Speed", "s", 1.5, 3.54, 60, function (x) {
         this.value = Math.max(this.min, 3 * (1 - x));
     }),
 		new Stat("Echolocator/Haunt Duration", "s", 3, 12, 1, function (x) {
