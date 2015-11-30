@@ -53,10 +53,10 @@ angular.module('splatoonApp').stats = function ($scope) {
     new Stat("Bomb Throw Range", "%", 0, 150, 60, function (x) {
         this.value = Math.min(this.max, (156.8 * (1 + x))/156.8*100);
     }),
-    new Stat("Run Speed", "%", 0, 144, 60, function (x) {
+    new Stat("Run Speed", " u/s", 0, 144, 60, function (x) {
         this.value = Math.min(this.max, 96 * (1 + x));
     }),
-    new Stat("Swim Speed", "%", 0, 240, 120, function (x) {
+    new Stat("Swim Speed", " u/s", 0, 240, 120, function (x) {
         this.value = Math.min(this.max, 192 * (1 + x));
     }),
     new Stat("Special Charge", "%", 0, 130, 100, function (x) {
