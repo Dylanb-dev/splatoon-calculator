@@ -19,8 +19,6 @@
 <script src='stats.js'></script>
 <script src='gear.js'></script>
 <script src='abilities.js'></script>
-<script src='brands.js'></script>
-
 
 
 
@@ -94,8 +92,8 @@
         <td><a href="http://splatoonwiki.org/wiki/{{item.uname}}">{{item.name}}</a></td>
         <td><img ng-src="assets/images/{{item.uname}}.png" ></td>
         <td ng-repeat="ability in abilities" ng-show="{{ability.name == item.ability}}"><img  ng-src="{{ability.icon}}" alt="{{ability.name}}"></img></td>
-        <td ng-style="{'background-color':'#77DD77'}"><img ng-repeat="abil in abilities" ng-if="item.rolls[abil.name] == '1/3.3'" ng-src="{{abil.icon}}" alt="{{abil.name}}"></img>{{item[abil.name]}}</td>
-        <td ng-style="{'background-color':'#FF6961'}"><img ng-repeat="abil in abilities" ng-if="item.rolls[abil.name] == '1/33'" ng-src="{{abil.icon}}" alt="{{abil.name}}"></img>{{item[abil.name]}}</td>
+        <td ng-style="{'background-color':'#77DD77'}"><img ng-repeat="abil in abilities" ng-if="item[abil.name] == '1/3.3'" ng-src="{{abil.icon}}" alt="{{abil.name}}"></img></td>
+        <td ng-style="{'background-color':'#FF6961'}"><img ng-repeat="abil in abilities" ng-if="item[abil.name] == '1/33'" ng-src="{{abil.icon}}" alt="{{abil.name}}"></img></td>
       </tr>
     </tbody>
   </table>

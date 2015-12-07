@@ -9,25 +9,6 @@ splatoonApp.controller('MainCtrl', function ($scope) {
 	angular.module('splatoonApp').stats($scope);
 	angular.module('splatoonApp').abilities($scope);
 	angular.module('splatoonApp').gear($scope);
-	angular.module('splatoonApp').brands($scope);
-
-
-	//Combine gear and brand tables.
-	$scope.gear.forEach(function(gear) {
-    var result = $scope.brands.filter(function(brand) {
-        if (brand.name === gear.brand) {
-					return brand.rolls;
-				};
-    });
-    if(result !== undefined){
-			gear.result = result[0].value;
-			gear.result = result[1].value;
-		}
-
-});
-
-	console.log($scope.gear)
-
 
 	//Start main logic
 	var points = 0;
